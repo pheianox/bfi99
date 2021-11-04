@@ -1,7 +1,7 @@
 /*
+    Brainfuck intrepeter BFI99.
     Copyright (c) 2021 Nathan Archer (pheianox)
     License: https://github.com/pheianox/bfi99/blob/main/LICENSE.md
-    Brainfuck intrepeter BFI99.
 */
 
 #include "stdio.h"
