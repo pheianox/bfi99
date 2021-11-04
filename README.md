@@ -1,8 +1,10 @@
 # BFI99
 
-A [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) intrepeter focused on performance.
+Super fast [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) intrepeter.
 
-~100 lines of super clean C code. 
+About 100 lines of snowy clean C code.
+
+The goal is to build a very clean and fast intrepeter without too many unnecessary abstractions.
 
 ### Installation
 You need to build the intrepeter with any C compiler
