@@ -9,7 +9,7 @@ The goal is to build a very clean and fast intrepeter without too many unnecessa
 - [ ] Cover with tests
 
 ### Installation
-Build the intrepeter with any C compiler
+Build the intrepeter with any C compiler. We're using GCC.
 ```
 gcc ./bfi99.c -o bfi99
 ```
