@@ -7,7 +7,7 @@ About 100 lines of snowy clean C code.
 The goal is to build a very clean and fast intrepeter without too many unnecessary abstractions.
 
 ### Installation
-You need to build the intrepeter with any C compiler
+Build the intrepeter with any C compiler
 ```
 gcc ./bfi99.c -o bfi99
 ```
