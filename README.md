@@ -4,8 +4,9 @@ Super fast [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) intrepeter.
 
 The goal is to build a very clean and fast intrepeter without too many unnecessary abstractions.
 
-[] Support nested loops
-[] Cover with tests
+- [x] Basic commands
+- [ ] Support nested loops
+- [ ] Cover with tests
 
 ### Installation
 Build the intrepeter with any C compiler
