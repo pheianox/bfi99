@@ -12,7 +12,7 @@
 
 int main(int argc, char **argv)
 {
-    if (argc < 2)
+    if (2 > argc)
     {
         printf("\nERROR: Please, provide the interpetation target.\n\n");
         return 1;
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     size_t fl = ftell(fp);
     fseek(fp, 0, SEEK_SET);
 
-    if (fl <= 0)
+    if (0 >= fl)
     {
         printf("\nERROR: Target file is empty.\n\n");
         return 1;
