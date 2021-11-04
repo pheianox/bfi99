@@ -18,7 +18,7 @@ bfi99 <target>
 ```
 
 ### Notes
-* The current version of the intrepeter doesn't supports any nested loops.
+* The current version of the intrepeter doesn't support any nested loops.
 * No tests
 
 ### License
