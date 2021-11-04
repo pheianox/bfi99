@@ -122,7 +122,7 @@ int main(int argc, char **argv)
 
             case ']':
             {
-                i = 0 == *p ? i + 1 : r;
+                i = (0 == *p) ? i + 1 : r;
                 continue;
             }
 
