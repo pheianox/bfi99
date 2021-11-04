@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     size_t file_size = ftell(file);
     fseek(file, 0, SEEK_SET);
 
-    if (file_size <= 1)
+    if (file_size <= 0)
     {
         printf("\nERROR: Target file is empty.\n\n");
         return 1;
@@ -51,6 +51,13 @@ int main(int argc, char **argv)
     fclose(file);
 
     char *p = calloc(MEMSIZE, sizeof(char));
+
+    if (NULL == p)
+    {
+        printf("\nERROR: Couldn't allocate memory for memory pointer.\n\n");
+        return 1;
+    }
+
     int   i = 0;
     int   r = 0;
 
