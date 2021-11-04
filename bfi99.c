@@ -1,14 +1,14 @@
 /*
-
     Copyright (c) 2021 Nathan Archer (pheianox)
-
+    License: https://github.com/pheianox/bfi99.c/README.md
     Brainfuck intrepeter BFI99.
-    
 */
 
 #include "stdio.h"
 #include "stdlib.h"
-#define MEMSIZE 30000
+#define MEMSIZE 50
+#define STACKSIZE 50
+
 
 int main(int argc, char **argv)
 {
@@ -18,125 +18,123 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    char *path = argv[1];
+    FILE *fp = fopen(argv[1], "r");
 
-    FILE *file = fopen(path, "r");
-
-    if (NULL == file)
+    if (NULL == fp)
     {
-        printf("\nERROR: Couldn't open target file %s.\n\n", path);
+        printf("\nERROR: Couldn't open target file.\n\n");
         return 1;
     }
 
-    fseek(file, 0, SEEK_END);
-    size_t file_size = ftell(file);
-    fseek(file, 0, SEEK_SET);
+    fseek(fp, 0, SEEK_END);
+    size_t fl = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
 
-    if (file_size <= 0)
+    if (fl <= 0)
     {
         printf("\nERROR: Target file is empty.\n\n");
         return 1;
     }
 
-    char *buffer = malloc((file_size + 1) * sizeof(char));
+    size_t bl = fl + 1;
+    char *bp = malloc(bl * sizeof(char));
+    int bi = 0;
 
-    if (NULL == buffer)
+    if (NULL == bp)
     {
-        printf("\nERROR: Couldn't allocate memory for target file.\n\n");
+        printf("\nERROR: Memory allocation failed.\n\n");
         return 1;
     }
 
-    fread(buffer, 1, file_size, file);
-    buffer[file_size] = '\0';
-    fclose(file);
+    fread(bp, 1, fl, fp);
+    bp[fl] = '\0';
+    fclose(fp);
 
-    char *p = calloc(MEMSIZE, sizeof(char));
+    char mp[MEMSIZE] = {0};
+    int mi = 0;
 
-    if (NULL == p)
+    char sp[STACKSIZE] = {0};
+    int si = 0;
+
+    while (bi < bl)
     {
-        printf("\nERROR: Couldn't allocate memory for memory pointer.\n\n");
-        return 1;
-    }
-
-    int   i = 0;
-    int   r = 0;
-
-    for (;;)
-    {
-        switch (buffer[i])
+        switch (bp[bi])
         {
             case '\0':
             {
+                // debugger
+                for (int i = 0; i < MEMSIZE; i++) {
+                    printf("\tmp[%d] = %d", i, mp[i]);
+                }
+
                 return 1;
             }
 
-            case ' ': 
-            case '\n': 
-            case '\r': 
-            {
-                i++;
-                continue;
-            }
-            
             case '>':
             {
-                p++;
-                i++;
+                ++mi;
+                ++bi;
                 continue;
             }
 
             case '<':
             {
-                p--;
-                i++;
+                --mi;
+                ++bi;
                 continue;
             }
 
             case '+':
             {
-                *p = (*p + 1) % 256;
-                i++;
+                mp[mi] = (mp[mi] + 1) % 256;
+                ++bi;
                 continue;
             }
 
             case '-': 
             {
-                if ((*p)-- < 0) *p = 255;
-                i++;
+                --mp[mi];
+                
+                if (mp[mi] < 0) mp[mi] = 255;
+
+                ++bi;
                 continue;
             }
 
             case '.':
             {
-                putchar(*p);
-                i++;
+                putchar(mp[mi]);
+                ++bi;
                 continue;
             }
 
             case ',':
             {
-                *p = getchar();
-                i++;
+                mp[mi] = getchar();
+                ++bi;
                 continue;
             }
 
             case '[':
             {
-                r = i;
-                i++;
+                sp[si] = bi;
+                ++si;
+                ++bi;
                 continue;
             }
 
             case ']':
             {
-                i = (0 == *p) ? i + 1 : r;
+                bi = (0 == mp[mi])
+                   ? bi + 1
+                   : sp[--si];
+
                 continue;
             }
 
             default:
             {
-                printf("Unexpected character \"%c\"", buffer[i]);
-                return 1;
+                continue;
             }
         }
     }
