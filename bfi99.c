@@ -8,7 +8,7 @@
 #include "stdlib.h"
 #define MEMSIZE 50
 #define STACKSIZE 50
-
+#define DEBUG 0
 
 int main(int argc, char **argv)
 {
@@ -63,9 +63,11 @@ int main(int argc, char **argv)
             case '\0':
             {
                 // debugger
+                #if DEBUG
                 for (int i = 0; i < MEMSIZE; i++) {
                     printf("\tmp[%d] = %d", i, mp[i]);
                 }
+                #endif
 
                 return 1;
             }
