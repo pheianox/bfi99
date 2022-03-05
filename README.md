@@ -1,6 +1,6 @@
 # BFI99
 
-Super fast [Brainfuck](https://en.wikipedia.org/wiki/Brainfuck) intrepeter.
+A super fast intrepeter for [The Brainfuck Programming Language](https://en.wikipedia.org/wiki/Brainfuck)
 
 The goal is to build a very clean and fast intrepeter without too many unnecessary abstractions.
 
