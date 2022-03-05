@@ -1,6 +1,6 @@
 # BFI99
 
-A super fast intrepeter for [The Brainfuck Programming Language](https://en.wikipedia.org/wiki/Brainfuck)
+A super fast intrepeter for [Tthe Brainfuck Programming Language](https://en.wikipedia.org/wiki/Brainfuck)
 
 The goal is to build a very clean and fast intrepeter without too many unnecessary abstractions.
 
@@ -9,7 +9,7 @@ The goal is to build a very clean and fast intrepeter without too many unnecessa
 - [ ] Cover with tests
 
 ### Installation
-Build the intrepeter with any C compiler. We're using [GCC](https://gcc.gnu.org/).
+Build the intrepeter with any C compiler. We're using [GCC](https://gcc.gnu.org/) in this example.
 ```
 gcc ./bfi99.c -o bfi99
 ```
@@ -18,6 +18,9 @@ gcc ./bfi99.c -o bfi99
 ```
 bfi99 <target file>
 ```
+
+### Contribution
+Feel free to give us some suggestions or ideas about improving this project.
 
 ### License
 ```
